@@ -13,6 +13,8 @@
     "@ai-sdk/groq": "catalog:",
     "@t3-oss/env-core": "catalog:",
     "ai": "catalog:",
+    "neverthrow": "catalog:",
+    "serialize-error": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
