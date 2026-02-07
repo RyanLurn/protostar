@@ -10,6 +10,9 @@
     "#*": "./src/*.ts"
   },
   "dependencies": {
+    "@ai-sdk/groq": "catalog:",
+    "@t3-oss/env-core": "catalog:",
+    "ai": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
