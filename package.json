@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "format": "bunx prettier . --write",
-    "format:check": "bunx prettier . --check"
+    "format:check": "bunx prettier . --check",
+    "sync-hooks": "bunx lefthook install"
   },
   "workspaces": {
     "packages": [
