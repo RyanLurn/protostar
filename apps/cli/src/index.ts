@@ -1,3 +1,4 @@
+import { beat } from "#prompts/beat";
 import { join } from "node:path";
 
 let alive: boolean = true;
@@ -9,6 +10,10 @@ const systemPrompt = await Bun.file(
 
 while (alive) {
   console.log(`\nTurn ${turn}:`);
+
+  const heartbeat = beat();
+  console.log(heartbeat);
+
   turn++;
-  Bun.sleepSync(300);
+  Bun.sleepSync(500);
 }
