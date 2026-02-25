@@ -13,7 +13,6 @@ export const frontendConfig = defineConfig([
       globals: {
         ...globals.bunBuiltin,
         ...globals.browser,
-        ...globals.node,
       },
       parserOptions: {
         projectService: true,

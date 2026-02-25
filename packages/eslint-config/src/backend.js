@@ -8,12 +8,11 @@ export const backendConfig = defineConfig([
   baseConfig,
   {
     languageOptions: {
-      globals: {
-        ...globals.bunBuiltin,
-        ...globals.node,
-      },
       parserOptions: {
         projectService: true,
+      },
+      globals: {
+        ...globals.bunBuiltin,
       },
     },
   },
