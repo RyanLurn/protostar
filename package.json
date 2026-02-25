@@ -32,6 +32,7 @@
     }
   },
   "scripts": {
+    "web:dev": "bun --filter @protostar/web dev",
     "check-types": "bun run --parallel --workspaces --if-present --no-exit-on-error check-types",
     "lint": "bun run --parallel --workspaces --if-present --no-exit-on-error lint",
     "lint:fix": "bun run --parallel --workspaces --if-present --no-exit-on-error lint:fix",
