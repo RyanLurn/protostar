@@ -10,6 +10,7 @@
     ],
     "catalog": {
       "@t3-oss/env-core": "^0.13.10",
+      "consola": "^3.4.2",
       "eslint": "^10.0.2",
       "neverthrow": "^8.2.0",
       "serialize-error": "^13.0.1",

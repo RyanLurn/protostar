@@ -60,6 +60,7 @@
     "scripts/grab": {
       "name": "@protostar/grab",
       "dependencies": {
+        "consola": "catalog:",
         "neverthrow": "catalog:",
         "zod": "catalog:",
       },
@@ -74,6 +75,7 @@
   },
   "catalog": {
     "@t3-oss/env-core": "^0.13.10",
+    "consola": "^3.4.2",
     "eslint": "^10.0.2",
     "neverthrow": "^8.2.0",
     "serialize-error": "^13.0.1",
@@ -539,6 +541,8 @@
     "commander": ["commander@14.0.3", "", {}, "sha512-H+y0Jo/T1RZ9qPP4Eh1pkcQcLRglraJaSLoyOtHxu6AapkjWVCy2Sit1QQ4x3Dng8qDlSsZEet7g5Pq06MvTgw=="],
 
     "concat-map": ["concat-map@0.0.1", "", {}, "sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg=="],
+
+    "consola": ["consola@3.4.2", "", {}, "sha512-5IKcdX0nnYavi6G7TtOhwkYzyjfJlatbjMjuLSfE2kYT5pMDOilZ4OvMhi637CcDICTmz3wARPoyhqyX1Y+XvA=="],
 
     "content-disposition": ["content-disposition@1.0.1", "", {}, "sha512-oIXISMynqSqm241k6kcQ5UwttDILMK4BiurCfGEREw6+X9jkkpEe5T9FZaApyLGGOnFuyMWZpdolTXMtvEJ08Q=="],
 
