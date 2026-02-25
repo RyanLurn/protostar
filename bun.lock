@@ -57,6 +57,20 @@
     "packages/typescript-config": {
       "name": "@protostar/typescript-config",
     },
+    "scripts/grab": {
+      "name": "@protostar/grab",
+      "dependencies": {
+        "neverthrow": "catalog:",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@protostar/eslint-config": "workspace:*",
+        "@protostar/typescript-config": "workspace:*",
+        "@types/bun": "catalog:types",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+      },
+    },
   },
   "catalog": {
     "@t3-oss/env-core": "^0.13.10",
@@ -285,6 +299,8 @@
     "@open-draft/until": ["@open-draft/until@2.1.0", "", {}, "sha512-U69T3ItWHvLwGg5eJ0n3I62nWuE6ilHlmz7zM0npLBRvPRd7e6NYmg54vvRtP5mZG7kZqZCFVdsTWo7BPtBujg=="],
 
     "@protostar/eslint-config": ["@protostar/eslint-config@workspace:packages/eslint-config"],
+
+    "@protostar/grab": ["@protostar/grab@workspace:scripts/grab"],
 
     "@protostar/typescript-config": ["@protostar/typescript-config@workspace:packages/typescript-config"],
 
@@ -997,6 +1013,8 @@
     "natural-orderby": ["natural-orderby@5.0.0", "", {}, "sha512-kKHJhxwpR/Okycz4HhQKKlhWe4ASEfPgkSWNmKFHd7+ezuQlxkA5cM3+XkBPvm1gmHen3w53qsYAv+8GwRrBlg=="],
 
     "negotiator": ["negotiator@1.0.0", "", {}, "sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg=="],
+
+    "neverthrow": ["neverthrow@8.2.0", "", { "optionalDependencies": { "@rollup/rollup-linux-x64-gnu": "^4.24.0" } }, "sha512-kOCT/1MCPAxY5iUV3wytNFUMUolzuwd/VF/1KCx7kf6CutrOsTie+84zTGTpgQycjvfLdBBdvBvFLqFD2c0wkQ=="],
 
     "node-domexception": ["node-domexception@1.0.0", "", {}, "sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ=="],
 

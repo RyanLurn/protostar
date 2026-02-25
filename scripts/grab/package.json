@@ -1,0 +1,22 @@
+{
+  "name": "@protostar/grab",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "check-types": "bunx tsc --noEmit",
+    "lint": "bunx eslint --cache",
+    "lint:fix": "bunx eslint --cache --fix",
+    "check": "bun run check-types && bun run lint"
+  },
+  "dependencies": {
+    "neverthrow": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@protostar/eslint-config": "workspace:*",
+    "@protostar/typescript-config": "workspace:*",
+    "@types/bun": "catalog:types",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
+  }
+}
