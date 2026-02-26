@@ -37,9 +37,10 @@ export async function processFile({
       `[grab script] Formatted content: ${formattedOutput.slice(0, 100)}...`
     );
 
+    consola.success(`[grab script] Successfully processed file: ${path}`);
     return ok(formattedOutput);
   } catch (error) {
-    consola.error(`[grab script] Failed to read file: ${path}`);
+    consola.error(`[grab script] Failed to process file: ${path}`);
     consola.error(error);
 
     return err(error);
