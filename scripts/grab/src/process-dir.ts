@@ -5,15 +5,15 @@ import { err, ok } from "neverthrow";
 import consola from "consola";
 import { join } from "path";
 
+import { LOG_PREFIX, DIR_WORD } from "@/constants";
 import { processFile } from "@/process-file";
-import { dirWord } from "@/constants";
 
 export async function processDir({
   dirPath,
 }: {
   dirPath: string;
 }): Promise<Result<string, unknown>> {
-  consola.info(`[grab script] Processing ${dirWord}: ${dirPath}`);
+  consola.info(`${LOG_PREFIX} Processing ${DIR_WORD}: ${dirPath}`);
 
   let outputContent = "";
 
@@ -22,12 +22,12 @@ export async function processDir({
       withFileTypes: true,
       recursive: true,
     });
-    consola.debug("[grab script] Got entries:");
+    consola.debug(`${LOG_PREFIX} Got entries:`);
     consola.debug(entries);
 
     const filePaths = entries.map((entry) => join(dirPath, entry.name));
     const totalFiles = filePaths.length;
-    consola.debug(`[grab script] Got ${totalFiles} files:`);
+    consola.debug(`${LOG_PREFIX} Got ${totalFiles} files:`);
     consola.debug(filePaths);
 
     for (const [index, path] of filePaths.entries()) {
@@ -43,12 +43,12 @@ export async function processDir({
 
       outputContent += processFileResult.value;
       outputContent += "\n";
-      consola.debug(`[grab script] Added content from: ${path}`);
+      consola.debug(`${LOG_PREFIX} Added content from: ${path}`);
     }
 
     return ok(outputContent);
   } catch (error) {
-    consola.error(`[grab script] Failed to process ${dirWord}: ${dirPath}`);
+    consola.error(`${LOG_PREFIX} Failed to process ${DIR_WORD}: ${dirPath}`);
     consola.error(error);
 
     return err(error);
