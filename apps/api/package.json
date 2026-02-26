@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "bun run --hot src/index.ts",
+    "dev:client": "bunx tsdown --watch",
     "build:client": "bunx tsdown",
     "try": "bun run test/try.ts",
     "check-types": "bunx tsc --noEmit",
