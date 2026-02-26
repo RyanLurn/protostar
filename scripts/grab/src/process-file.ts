@@ -1,7 +1,7 @@
+import type { ConsolaInstance } from "consola";
 import type { Result } from "neverthrow";
 
 import { err, ok } from "neverthrow";
-import { consola } from "consola";
 import { parse } from "path";
 
 import { formatOutput } from "@/format-output";
@@ -9,23 +9,25 @@ import { LOG_PREFIX } from "@/constants";
 
 export async function processFile({
   totalFiles,
+  logger,
   index,
   path,
 }: {
+  logger: ConsolaInstance;
   totalFiles: number;
   index: number;
   path: string;
 }): Promise<Result<string, unknown>> {
-  consola.start(
+  logger.start(
     `${LOG_PREFIX} Processing file (${index + 1}/${totalFiles}): ${path}`
   );
 
   try {
     const content = await Bun.file(path).text();
-    consola.debug(`${LOG_PREFIX} Got content: ${content.slice(0, 100)}...`);
+    logger.debug(`${LOG_PREFIX} Got content: ${content.slice(0, 100)}...`);
 
     const parsedFile = parse(path);
-    consola.debug(
+    logger.debug(
       `${LOG_PREFIX} Parse file result: ${JSON.stringify(parsedFile)}`
     );
 
@@ -34,15 +36,15 @@ export async function processFile({
       content,
       path,
     });
-    consola.debug(
+    logger.debug(
       `${LOG_PREFIX} Formatted content: ${formattedOutput.slice(0, 100)}...`
     );
 
-    consola.success(`${LOG_PREFIX} Successfully processed file: ${path}`);
+    logger.success(`${LOG_PREFIX} Successfully processed file: ${path}`);
     return ok(formattedOutput);
   } catch (error) {
-    consola.error(`${LOG_PREFIX} Failed to process file: ${path}`);
-    consola.error(error);
+    logger.error(`${LOG_PREFIX} Failed to process file: ${path}`);
+    logger.error(error);
 
     return err(error);
   }

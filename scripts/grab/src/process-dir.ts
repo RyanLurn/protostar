@@ -1,8 +1,8 @@
+import type { ConsolaInstance } from "consola";
 import type { Result } from "neverthrow";
 
 import { readdir } from "fs/promises";
 import { err, ok } from "neverthrow";
-import consola from "consola";
 import { join } from "path";
 
 import { LOG_PREFIX, DIR_WORD } from "@/constants";
@@ -10,10 +10,12 @@ import { processFile } from "@/process-file";
 
 export async function processDir({
   dirPath,
+  logger,
 }: {
+  logger: ConsolaInstance;
   dirPath: string;
 }): Promise<Result<string, unknown>> {
-  consola.info(`${LOG_PREFIX} Processing ${DIR_WORD}: ${dirPath}`);
+  logger.info(`${LOG_PREFIX} Processing ${DIR_WORD}: ${dirPath}`);
 
   let outputContent = "";
 
@@ -22,17 +24,18 @@ export async function processDir({
       withFileTypes: true,
       recursive: true,
     });
-    consola.debug(`${LOG_PREFIX} Got entries:`);
-    consola.debug(entries);
+    logger.debug(`${LOG_PREFIX} Got entries:`);
+    logger.debug(entries);
 
     const filePaths = entries.map((entry) => join(dirPath, entry.name));
     const totalFiles = filePaths.length;
-    consola.debug(`${LOG_PREFIX} Got ${totalFiles} files:`);
-    consola.debug(filePaths);
+    logger.debug(`${LOG_PREFIX} Got ${totalFiles} files:`);
+    logger.debug(filePaths);
 
     for (const [index, path] of filePaths.entries()) {
       const processFileResult = await processFile({
         totalFiles,
+        logger,
         index,
         path,
       });
@@ -43,13 +46,13 @@ export async function processDir({
 
       outputContent += processFileResult.value;
       outputContent += "\n";
-      consola.debug(`${LOG_PREFIX} Added content from: ${path}`);
+      logger.debug(`${LOG_PREFIX} Added content from: ${path}`);
     }
 
     return ok(outputContent);
   } catch (error) {
-    consola.error(`${LOG_PREFIX} Failed to process ${DIR_WORD}: ${dirPath}`);
-    consola.error(error);
+    logger.error(`${LOG_PREFIX} Failed to process ${DIR_WORD}: ${dirPath}`);
+    logger.error(error);
 
     return err(error);
   }
