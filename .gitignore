@@ -35,3 +35,9 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # Grabbed files
 grabbed
+
+# Try scripts
+try.ts
+try.js
+*.try.ts
+*.try.js

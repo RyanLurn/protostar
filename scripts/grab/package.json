@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "bun run src/index.ts",
+    "try": "bun run test/try.ts",
     "check-types": "bunx tsc --noEmit",
     "lint": "bunx eslint --cache",
     "lint:fix": "bunx eslint --cache --fix",
@@ -13,6 +14,7 @@
     "consola": "catalog:",
     "ignore": "^7.0.5",
     "neverthrow": "catalog:",
+    "serialize-error": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
