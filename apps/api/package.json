@@ -4,11 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "bun run --hot src/index.ts",
+    "build:client": "bunx tsdown",
     "try": "bun run test/try.ts",
     "check-types": "bunx tsc --noEmit",
     "lint": "bunx eslint --cache",
     "lint:fix": "bunx eslint --cache --fix",
     "check": "bun run check-types && bun run lint"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/rpc-client.mjs",
+      "types": "./dist/rpc-client.d.mts"
+    }
   },
   "dependencies": {
     "hono": "^4.12.2",
@@ -20,6 +27,7 @@
     "@protostar/typescript-config": "workspace:*",
     "@types/bun": "catalog:types",
     "eslint": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:"
   }
 }

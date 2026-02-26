@@ -1,12 +1,17 @@
+import { rpcClient } from "@protostar/api";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 
 export function App() {
   async function helloHono() {
-    const response = await fetch("http://localhost:3000/");
-    const text = await response.text();
-    toast(text);
+    const response = await rpcClient.index.$get();
+
+    if (response.ok) {
+      toast.success(await response.text());
+    } else {
+      toast.error("Failed to get response from Hono API");
+    }
   }
 
   return (
