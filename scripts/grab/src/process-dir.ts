@@ -4,8 +4,10 @@ import type { Result } from "neverthrow";
 import { readdir } from "fs/promises";
 import { err, ok } from "neverthrow";
 import { join } from "path";
+import ignore from "ignore";
 
 import { LOG_PREFIX, DIR_WORD } from "@/constants";
+import { loadGitignore } from "@/load-gitignore";
 import { processFile } from "@/process-file";
 
 export async function processDir({
@@ -27,14 +29,28 @@ export async function processDir({
     logger.debug(`${LOG_PREFIX} Got entries:`);
     logger.debug(entries);
 
-    const filePaths = entries.map((entry) => join(dirPath, entry.name));
+    const loadGitignoreResult = await loadGitignore({ logger });
+    if (loadGitignoreResult.isErr()) {
+      return err(loadGitignoreResult.error);
+    }
+
+    const gitignoreFilter = ignore().add(loadGitignoreResult.value);
+
+    const filePaths = entries
+      .filter((entry) => entry.isFile())
+      .map((entry) => join(dirPath, entry.name));
     const totalFiles = filePaths.length;
     logger.debug(`${LOG_PREFIX} Got ${totalFiles} files:`);
     logger.debug(filePaths);
 
-    for (const [index, path] of filePaths.entries()) {
+    const filteredFilePaths = gitignoreFilter.filter(filePaths);
+    const totalFilesLeft = filteredFilePaths.length;
+    logger.debug(`${LOG_PREFIX} Filtered to ${totalFilesLeft} files:`);
+    logger.debug(filteredFilePaths);
+
+    for (const [index, path] of filteredFilePaths.entries()) {
       const processFileResult = await processFile({
-        totalFiles,
+        totalFiles: totalFilesLeft,
         logger,
         index,
         path,
