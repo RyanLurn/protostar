@@ -44,3 +44,6 @@ try.js
 
 # Turborepo
 .turbo
+
+# TanStack Router
+.tanstack
