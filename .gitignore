@@ -41,3 +41,6 @@ try.ts
 try.js
 *.try.ts
 *.try.js
+
+# Turborepo
+.turbo
