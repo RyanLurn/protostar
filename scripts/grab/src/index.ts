@@ -1,52 +1,60 @@
+import { createConsola, consola } from "consola";
 import { parse, join } from "path";
 import { stat } from "fs/promises";
-import { consola } from "consola";
-import { parseArgs } from "util";
-import { z } from "zod";
+
+import { LOG_PREFIX, OUT_DIR } from "@/constants";
+import { processFile } from "@/process-file";
+import { processDir } from "@/process-dir";
+import { getInputs } from "@/get-inputs";
+
+consola.start("Grabbing file(s)...");
+
+const inputs = getInputs();
+
+const logger = createConsola({
+  level: inputs["log-level"],
+});
+
+let outputContent = "";
 
 try {
-  const { values } = parseArgs({
-    options: {
-      "exclude-gitignore": {
-        type: "boolean",
-        default: false,
-      },
-      path: {
-        type: "string",
-      },
-    },
-    allowPositionals: true,
-    args: Bun.argv,
-    strict: true,
-  });
+  const stats = await stat(inputs.path);
 
-  const InputSchema = z.object({
-    "exclude-gitignore": z.boolean().default(false),
-    path: z.string(),
-  });
+  if (stats.isDirectory()) {
+    const processDirResult = await processDir({
+      dirPath: inputs.path,
+      logger,
+    });
 
-  const parsedInput = InputSchema.parse(values);
+    if (processDirResult.isErr()) {
+      process.exit(1);
+    }
 
-  const stats = await stat(parsedInput.path);
+    outputContent += processDirResult.value;
+  } else {
+    const processFileResult = await processFile({
+      path: inputs.path,
+      totalFiles: 1,
+      index: 0,
+      logger,
+    });
 
-  const outputDir = join(import.meta.dir, "..", "grabbed");
+    if (processFileResult.isErr()) {
+      process.exit(1);
+    }
 
-  if (stats.isFile()) {
-    const fileContent = await Bun.file(parsedInput.path).text();
-    const fileName = parse(parsedInput.path).name;
-    const fileExtension = parse(parsedInput.path).ext;
-
-    const fileOutputContent = `Path: \`${parsedInput.path}\`
-\`\`\`${fileExtension.slice(1)}
-${fileContent.trim()}
-\`\`\`
-`;
-
-    const fileOutputPath = join(outputDir, `${fileName}.md`);
-    await Bun.write(fileOutputPath, fileOutputContent);
-
-    consola.success(`File grabbed and saved to ${fileOutputPath}`);
+    outputContent += processFileResult.value;
   }
+
+  await Bun.write(
+    join(OUT_DIR, `${parse(inputs.path).name}.md`),
+    outputContent
+  );
+  logger.success(
+    `${LOG_PREFIX} Saved results to ${join(OUT_DIR, `${parse(inputs.path).name}.md`)}`
+  );
 } catch (error) {
-  consola.error(error);
+  logger.error(`${LOG_PREFIX} Failed to grab file(s)`);
+  logger.error(error);
+  process.exit(1);
 }
