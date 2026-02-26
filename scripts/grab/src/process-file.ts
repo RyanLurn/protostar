@@ -6,6 +6,8 @@ import { parse } from "path";
 
 import { formatOutput } from "@/format-output";
 
+const ignoredExts = [".lock", ".svg"];
+
 export async function processFile({
   totalFiles,
   logger,
@@ -20,16 +22,21 @@ export async function processFile({
   logger.info(`Processing file (${index + 1}/${totalFiles}): ${path}`);
 
   try {
-    const content = await Bun.file(path).text();
+    const parsedFile = parse(path);
+    const ext = parsedFile.ext;
+
+    let content: string;
+    if (ignoredExts.includes(ext)) {
+      content = "[SKIPPED]";
+    } else {
+      content = await Bun.file(path).text();
+    }
     logger.debug(`Got content: ${content.slice(0, 100)}...`);
 
-    const parsedFile = parse(path);
-    logger.debug(`Parse file result: ${JSON.stringify(parsedFile)}`);
-
     const formattedOutput = formatOutput({
-      ext: parsedFile.ext,
       content,
       path,
+      ext,
     });
     logger.debug(`Formatted content: ${formattedOutput.slice(0, 100)}...`);
 

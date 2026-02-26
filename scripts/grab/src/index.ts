@@ -1,13 +1,13 @@
 import { createConsola, consola } from "consola";
 import { parse, join } from "path";
 import { stat } from "fs/promises";
+import { $ } from "bun";
 
-import { LOG_PREFIX, OUT_DIR } from "@/constants";
 import { processFile } from "@/process-file";
-import { processDir } from "@/process-dir";
 import { getInputs } from "@/get-inputs";
+import { OUT_DIR } from "@/constants";
 
-consola.start(`${LOG_PREFIX} Grabbing file(s)...`);
+consola.start(`Grabbing file(s)...`);
 
 const inputs = getInputs();
 
@@ -15,28 +15,29 @@ const logger = createConsola({
   level: inputs["log-level"],
 });
 
-let outputContent = `Current working directory: ${process.cwd()}\n\n`;
+let outputContent = "";
 
 try {
   const stats = await stat(inputs.path);
 
-  if (stats.isDirectory()) {
-    const processDirResult = await processDir({
-      dirPath: inputs.path,
-      logger,
-    });
+  if (!stats.isDirectory()) {
+    logger.error(new Error("Path is not a directory"));
+    process.exit(1);
+  }
 
-    if (processDirResult.isErr()) {
-      process.exit(1);
-    }
+  const gitLsFilesOutput = await $`git ls-files`.cwd(inputs.path).text();
+  logger.debug("Files to grab:\n", gitLsFilesOutput);
 
-    outputContent += processDirResult.value;
-  } else {
+  const filePaths = gitLsFilesOutput.trim().split("\n");
+  const totalFiles = filePaths.length;
+
+  for (const [index, filePath] of filePaths.entries()) {
+    const path = join(inputs.path, filePath);
     const processFileResult = await processFile({
-      path: inputs.path,
-      totalFiles: 1,
-      index: 0,
+      totalFiles,
       logger,
+      index,
+      path,
     });
 
     if (processFileResult.isErr()) {
@@ -44,6 +45,7 @@ try {
     }
 
     outputContent += processFileResult.value;
+    outputContent += "\n";
   }
 
   await Bun.write(
@@ -51,10 +53,9 @@ try {
     outputContent
   );
   consola.success(
-    `${LOG_PREFIX} Saved results to ${join(OUT_DIR, `${parse(inputs.path).name}.md`)}`
+    `Saved results to ${join(OUT_DIR, `${parse(inputs.path).name}.md`)}`
   );
 } catch (error) {
-  logger.error(`${LOG_PREFIX} Failed to grab file(s)`);
-  logger.error(error);
+  logger.error(new Error("Failed to grab file(s)", { cause: error }));
   process.exit(1);
 }

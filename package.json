@@ -41,7 +41,8 @@
     "format": "bunx prettier . --write",
     "format:check": "bunx prettier . --check",
     "check": "bun run check-types && bun run lint && bun run format:check",
-    "sync-hooks": "bunx lefthook install"
+    "sync-hooks": "bunx lefthook install",
+    "grab": "bun --filter @protostar/grab start"
   },
   "devDependencies": {
     "lefthook": "^2.1.1",
