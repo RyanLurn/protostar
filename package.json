@@ -34,7 +34,7 @@
     }
   },
   "scripts": {
-    "web:dev": "bun --filter @protostar/web dev",
+    "dev": "bun --filter '*' dev",
     "check-types": "bun run --parallel --workspaces --if-present --no-exit-on-error check-types",
     "lint": "bun run --parallel --workspaces --if-present --no-exit-on-error lint",
     "lint:fix": "bun run --parallel --workspaces --if-present --no-exit-on-error lint:fix",
@@ -42,7 +42,9 @@
     "format:check": "bunx prettier . --check",
     "check": "bun run check-types && bun run lint && bun run format:check",
     "sync-hooks": "bunx lefthook install",
-    "grab": "bun --filter @protostar/grab start"
+    "grab": "bun --filter @protostar/grab start",
+    "web:dev": "bun --filter @protostar/web dev",
+    "api:dev": "bun --filter @protostar/api dev"
   },
   "devDependencies": {
     "lefthook": "^2.1.1",
