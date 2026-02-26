@@ -18,7 +18,7 @@ export async function processFile({
   index: number;
   path: string;
 }): Promise<Result<string, unknown>> {
-  logger.start(
+  logger.info(
     `${LOG_PREFIX} Processing file (${index + 1}/${totalFiles}): ${path}`
   );
 
