@@ -1,9 +1,13 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { rpcClient } from "@protostar/api";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+export const Route = createFileRoute("/")({
+  component: Index,
+});
 
-export function App() {
+function Index() {
   async function helloHono() {
     const response = await rpcClient.index.$get();
 

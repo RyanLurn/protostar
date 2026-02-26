@@ -13,6 +13,7 @@
   "dependencies": {
     "@base-ui/react": "^1.2.0",
     "@protostar/api": "workspace:*",
+    "@tanstack/react-router": "^1.163.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.575.0",
@@ -25,6 +26,7 @@
     "@protostar/eslint-config": "workspace:*",
     "@protostar/typescript-config": "workspace:*",
     "@tailwindcss/vite": "catalog:ui",
+    "@tanstack/router-plugin": "^1.163.2",
     "@types/bun": "catalog:types",
     "@types/react": "catalog:types",
     "@types/react-dom": "catalog:types",
