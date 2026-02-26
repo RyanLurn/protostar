@@ -2,7 +2,7 @@ import { consola } from "consola";
 import { parseArgs } from "util";
 import { z } from "zod";
 
-import { LOG_PREFIX } from "@/constants";
+import { LOG_PREFIX, ROOT_DIR } from "@/constants";
 
 export const InputsSchema = z.object({
   "log-level": z.int(),
@@ -18,6 +18,7 @@ export function getInputs() {
           default: "1",
         },
         path: {
+          default: ROOT_DIR,
           type: "string",
         },
       },
