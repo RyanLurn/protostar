@@ -7,7 +7,7 @@ import { processFile } from "@/process-file";
 import { processDir } from "@/process-dir";
 import { getInputs } from "@/get-inputs";
 
-consola.start("Grabbing file(s)...");
+consola.start(`${LOG_PREFIX} Grabbing file(s)...`);
 
 const inputs = getInputs();
 
@@ -15,7 +15,7 @@ const logger = createConsola({
   level: inputs["log-level"],
 });
 
-let outputContent = "";
+let outputContent = `Current working directory: ${process.cwd()}\n\n`;
 
 try {
   const stats = await stat(inputs.path);
@@ -50,7 +50,7 @@ try {
     join(OUT_DIR, `${parse(inputs.path).name}.md`),
     outputContent
   );
-  logger.success(
+  consola.success(
     `${LOG_PREFIX} Saved results to ${join(OUT_DIR, `${parse(inputs.path).name}.md`)}`
   );
 } catch (error) {

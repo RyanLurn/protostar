@@ -1,3 +1,5 @@
+import { sep } from "path";
+
 export function formatOutput({
   content,
   path,
@@ -7,7 +9,7 @@ export function formatOutput({
   path: string;
   ext: string;
 }) {
-  return `Path: \`${path}\`
+  return `Path: \`.${sep}${path}\`
 \`\`\`${ext.slice(1)}
 ${content.trim()}
 \`\`\`
