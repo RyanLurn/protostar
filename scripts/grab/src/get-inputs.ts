@@ -2,7 +2,7 @@ import { consola } from "consola";
 import { parseArgs } from "util";
 import { z } from "zod";
 
-import { LOG_PREFIX, ROOT_DIR } from "@/constants";
+import { ROOT_DIR } from "@/constants";
 
 export const InputsSchema = z.object({
   "log-level": z.int(),
@@ -33,14 +33,12 @@ export function getInputs() {
     });
 
     if (!parseInputsResult.success) {
-      consola.error(`${LOG_PREFIX} Invalid inputs:`);
       consola.error(z.prettifyError(parseInputsResult.error));
       process.exit(1);
     }
 
     return parseInputsResult.data;
   } catch (error) {
-    consola.error(`${LOG_PREFIX} Failed to parse inputs:`);
     consola.error(error);
     process.exit(1);
   }
