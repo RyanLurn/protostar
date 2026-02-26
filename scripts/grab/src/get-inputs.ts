@@ -15,7 +15,7 @@ export function getInputs() {
       options: {
         "log-level": {
           type: "string",
-          default: "3",
+          default: "1",
         },
         path: {
           type: "string",
