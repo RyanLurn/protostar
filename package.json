@@ -50,7 +50,8 @@
     "db:generate": "bun --filter @protostar/db generate",
     "db:migrate": "bun --filter @protostar/db migrate",
     "db:studio": "bun --filter @protostar/db studio",
-    "db:seed": "bun --filter @protostar/db seed"
+    "db:seed": "bun --filter @protostar/db seed",
+    "error:build": "bun --filter @protostar/error build"
   },
   "devDependencies": {
     "lefthook": "^2.1.1",
