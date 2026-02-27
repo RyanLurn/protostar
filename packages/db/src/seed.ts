@@ -3,10 +3,9 @@ import type { Result } from "neverthrow";
 import { err, ok } from "neverthrow";
 import { consola } from "consola";
 
+import { TEST_COUNTER_NAME } from "@/utils/constants";
 import { counterTable } from "@/schema/tables/count";
 import { db } from "@/index";
-
-export const TEST_COUNTER_NAME = "test";
 
 async function seed(): Promise<Result<undefined | string, unknown>> {
   consola.start("Seeding database...");
