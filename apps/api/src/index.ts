@@ -14,7 +14,7 @@ const app = new Hono()
   .get("/", (c) => {
     return c.text("Hello from Hono!");
   })
-  .get("/count/:name", async (c) => {
+  .get("/counter/:name/value", async (c) => {
     const name = c.req.param("name");
 
     const getCountResult = await getCount({ counterName: name });
