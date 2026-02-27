@@ -11,11 +11,13 @@
     "push": "bunx drizzle-kit push",
     "generate": "bunx drizzle-kit generate",
     "migrate": "bunx drizzle-kit migrate",
-    "studio": "bunx drizzle-kit studio"
+    "studio": "bunx drizzle-kit studio",
+    "seed": "bun run src/seed.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.17.0",
     "@t3-oss/env-core": "catalog:",
+    "consola": "catalog:",
     "drizzle-orm": "^0.45.1",
     "neverthrow": "catalog:",
     "zod": "catalog:"
