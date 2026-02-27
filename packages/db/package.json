@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@libsql/client": "^0.17.0",
+    "@protostar/error": "workspace:*",
     "@t3-oss/env-core": "catalog:",
     "consola": "catalog:",
     "drizzle-orm": "^0.45.1"
