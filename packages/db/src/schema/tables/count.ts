@@ -7,7 +7,7 @@ import { id } from "@/schema/helpers/id";
 
 export const counterTable = sqliteTable("counters", {
   id,
-  name: text("name").notNull(),
+  name: text("name").unique().notNull(),
   value: integer("value").notNull().default(0),
   ...timestamps,
 });
