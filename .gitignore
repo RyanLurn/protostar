@@ -47,3 +47,7 @@ try.js
 
 # TanStack Router
 .tanstack
+
+# SQLite
+*.sqlite
+*.db
