@@ -6,7 +6,12 @@ export class ProtostarUnknownError extends ProtostarError {
     { context, cause }: { context?: Record<string, unknown>; cause: unknown }
   ) {
     const serializedCause = serializeUnknownError(cause);
-    super(message, { cause: serializedCause, code: "UNKNOWN_ERROR", context });
+    super(message, {
+      cause: serializedCause,
+      code: "UNKNOWN_ERROR",
+      retryable: false,
+      context,
+    });
   }
 }
 

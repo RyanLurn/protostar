@@ -1,17 +1,25 @@
 export class ProtostarError extends Error {
-  context: Record<string, unknown> | undefined;
+  context?: Record<string, unknown>;
+  retryable?: boolean;
   code: string;
 
   constructor(
     message: string,
     {
+      retryable,
       context,
       cause,
       code,
-    }: { context?: Record<string, unknown>; cause?: unknown; code: string }
+    }: {
+      context?: Record<string, unknown>;
+      retryable?: boolean;
+      cause?: unknown;
+      code: string;
+    }
   ) {
     super(message, { cause });
-    this.code = code;
     this.context = context;
+    this.retryable = retryable;
+    this.code = code;
   }
 }
