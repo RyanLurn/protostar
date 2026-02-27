@@ -1,0 +1,31 @@
+{
+  "name": "@protostar/db",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "try": "bun run test/try.ts",
+    "check-types": "bunx tsc --noEmit",
+    "lint": "bunx eslint --cache",
+    "lint:fix": "bunx eslint --cache --fix",
+    "check": "bun run check-types && bun run lint",
+    "db:generate": "bunx --bun drizzle-kit generate",
+    "db:migrate": "bunx --bun drizzle-kit migrate",
+    "db:studio": "bunx --bun drizzle-kit studio"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.0",
+    "@t3-oss/env-core": "catalog:",
+    "drizzle-orm": "^0.45.1",
+    "neverthrow": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@protostar/eslint-config": "workspace:*",
+    "@protostar/typescript-config": "workspace:*",
+    "@types/bun": "catalog:types",
+    "drizzle-kit": "^0.31.9",
+    "eslint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
+  }
+}

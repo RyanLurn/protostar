@@ -63,6 +63,25 @@
         "vite": "catalog:",
       },
     },
+    "packages/db": {
+      "name": "@protostar/db",
+      "dependencies": {
+        "@libsql/client": "^0.17.0",
+        "@t3-oss/env-core": "catalog:",
+        "drizzle-orm": "^0.45.1",
+        "neverthrow": "catalog:",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@protostar/eslint-config": "workspace:*",
+        "@protostar/typescript-config": "workspace:*",
+        "@types/bun": "catalog:types",
+        "drizzle-kit": "^0.31.9",
+        "eslint": "catalog:",
+        "tsdown": "catalog:",
+        "typescript": "catalog:",
+      },
+    },
     "packages/eslint-config": {
       "name": "@protostar/eslint-config",
       "devDependencies": {
@@ -371,6 +390,8 @@
     "@oxc-project/types": ["@oxc-project/types@0.114.0", "", {}, "sha512-//nBfbzHQHvJs8oFIjv6coZ6uxQ4alLfiPe6D5vit6c4pmxATHHlVwgB1k+Hv4yoAMyncdxgRBF5K4BYWUCzvA=="],
 
     "@protostar/api": ["@protostar/api@workspace:apps/api"],
+
+    "@protostar/db": ["@protostar/db@workspace:packages/db"],
 
     "@protostar/eslint-config": ["@protostar/eslint-config@workspace:packages/eslint-config"],
 
