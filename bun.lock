@@ -84,6 +84,17 @@
         "zod": "catalog:",
       },
     },
+    "packages/error": {
+      "name": "@protostar/error",
+      "devDependencies": {
+        "@protostar/eslint-config": "workspace:*",
+        "@protostar/typescript-config": "workspace:*",
+        "@types/bun": "catalog:types",
+        "eslint": "catalog:",
+        "tsdown": "catalog:",
+        "typescript": "catalog:",
+      },
+    },
     "packages/eslint-config": {
       "name": "@protostar/eslint-config",
       "devDependencies": {
@@ -396,6 +407,8 @@
     "@protostar/api": ["@protostar/api@workspace:apps/api"],
 
     "@protostar/db": ["@protostar/db@workspace:packages/db"],
+
+    "@protostar/error": ["@protostar/error@workspace:packages/error"],
 
     "@protostar/eslint-config": ["@protostar/eslint-config@workspace:packages/eslint-config"],
 

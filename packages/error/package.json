@@ -1,0 +1,28 @@
+{
+  "name": "@protostar/error",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bunx tsdown --watch",
+    "build": "bunx tsdown",
+    "try": "bun run test/try.ts",
+    "check-types": "bunx tsc --noEmit",
+    "lint": "bunx eslint --cache",
+    "lint:fix": "bunx eslint --cache --fix",
+    "check": "bun run check-types && bun run lint"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/lib.mjs",
+      "types": "./dist/lib.d.mts"
+    }
+  },
+  "devDependencies": {
+    "@protostar/eslint-config": "workspace:*",
+    "@protostar/typescript-config": "workspace:*",
+    "@types/bun": "catalog:types",
+    "eslint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
+  }
+}
