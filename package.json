@@ -45,7 +45,11 @@
     "sync-hooks": "bunx lefthook install",
     "grab": "bun --filter @protostar/grab start",
     "web:dev": "bun --filter @protostar/web dev",
-    "api:dev": "bun --filter @protostar/api dev"
+    "api:dev": "bun --filter @protostar/api dev",
+    "db:push": "bun --filter @protostar/db push",
+    "db:generate": "bun --filter @protostar/db generate",
+    "db:migrate": "bun --filter @protostar/db migrate",
+    "db:studio": "bun --filter @protostar/db studio"
   },
   "devDependencies": {
     "lefthook": "^2.1.1",
