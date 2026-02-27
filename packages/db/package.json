@@ -3,6 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "dev": "bunx tsdown --watch",
+    "build": "bunx tsdown",
     "try": "bun run test/try.ts",
     "check-types": "bunx tsc --noEmit",
     "lint": "bunx eslint --cache",
@@ -14,11 +16,19 @@
     "studio": "bunx --bun drizzle-kit studio",
     "seed": "bun run src/seed.ts"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/lib.mjs",
+      "types": "./dist/lib.d.mts"
+    }
+  },
   "dependencies": {
     "@libsql/client": "^0.17.0",
     "@t3-oss/env-core": "catalog:",
     "consola": "catalog:",
-    "drizzle-orm": "^0.45.1",
+    "drizzle-orm": "^0.45.1"
+  },
+  "peerDependencies": {
     "neverthrow": "catalog:",
     "zod": "catalog:"
   },

@@ -19,6 +19,7 @@
     }
   },
   "dependencies": {
+    "@protostar/db": "workspace:*",
     "@t3-oss/env-core": "catalog:",
     "hono": "^4.12.2",
     "neverthrow": "catalog:",

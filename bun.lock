@@ -15,6 +15,7 @@
     "apps/api": {
       "name": "@protostar/api",
       "dependencies": {
+        "@protostar/db": "workspace:*",
         "@t3-oss/env-core": "catalog:",
         "hono": "^4.12.2",
         "neverthrow": "catalog:",
@@ -67,8 +68,6 @@
         "@t3-oss/env-core": "catalog:",
         "consola": "catalog:",
         "drizzle-orm": "^0.45.1",
-        "neverthrow": "catalog:",
-        "zod": "catalog:",
       },
       "devDependencies": {
         "@protostar/eslint-config": "workspace:*",
@@ -78,6 +77,10 @@
         "eslint": "catalog:",
         "tsdown": "catalog:",
         "typescript": "catalog:",
+      },
+      "peerDependencies": {
+        "neverthrow": "catalog:",
+        "zod": "catalog:",
       },
     },
     "packages/eslint-config": {
