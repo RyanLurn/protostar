@@ -122,6 +122,7 @@
       "name": "@protostar/ui",
       "dependencies": {
         "@base-ui/react": "^1.2.0",
+        "@protostar/error": "workspace:*",
         "@tanstack/react-router": "^1.163.2",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
