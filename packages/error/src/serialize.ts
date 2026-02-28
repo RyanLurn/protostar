@@ -2,7 +2,38 @@ import { serializeError } from "serialize-error";
 
 import type { ProtostarError } from "@/base-error";
 
-import { serializeUnknownError } from "@/unknown-error";
+export function serializeUnknownError(error: unknown): {
+  value: unknown;
+  type: string;
+} {
+  // Null / undefined
+  if (error === null || error === undefined) {
+    return { value: String(error), type: "nullish" };
+  }
+
+  // Primitive (string, number, boolean, bigint, symbol)
+  if (typeof error !== "object" && typeof error !== "function") {
+    return {
+      value: typeof error === "symbol" ? error.toString() : error,
+      type: typeof error,
+    };
+  }
+
+  // Plain object or anything else — attempt structured serialization
+  try {
+    return {
+      value: JSON.parse(JSON.stringify(error)),
+      type: "object",
+    };
+  } catch {
+    // Circular references, non-serializable values, etc.
+    return {
+      type: "unserializable",
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
+      value: String(error),
+    };
+  }
+}
 
 export function serializeProtostarError(error: ProtostarError) {
   const cause = error.cause;
