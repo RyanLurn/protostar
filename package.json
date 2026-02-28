@@ -52,6 +52,7 @@
     "db:studio": "bun --filter @protostar/db studio",
     "db:seed": "bun --filter @protostar/db seed",
     "error:build": "bun --filter @protostar/error build",
+    "ui:dev": "bun --filter @protostar/ui dev",
     "ui:check-types": "bun --filter @protostar/ui check-types",
     "ui:lint": "bun --filter @protostar/ui lint",
     "ui:lint:fix": "bun --filter @protostar/ui lint:fix",
