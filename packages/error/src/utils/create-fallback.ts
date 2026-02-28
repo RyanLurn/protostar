@@ -1,5 +1,5 @@
-import { ProtostarUnexpectedError } from "@/classes/unexpected";
-import { ProtostarUnknownError } from "@/classes/unknown";
+import { UnexpectedError } from "@/classes/unexpected";
+import { UnknownError } from "@/classes/unknown";
 
 export function createFallbackError(
   message: string,
@@ -12,7 +12,7 @@ export function createFallbackError(
   }
 ) {
   if (cause instanceof Error) {
-    return new ProtostarUnexpectedError(message, { context, cause });
+    return new UnexpectedError(message, { context, cause });
   }
-  return new ProtostarUnknownError(message, { context, cause });
+  return new UnknownError(message, { context, cause });
 }

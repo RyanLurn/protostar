@@ -1,7 +1,7 @@
 import { serializeUnknownError } from "@/utils/serialize";
 import { ProtostarError } from "@/classes/base";
 
-export class ProtostarUnknownError extends ProtostarError {
+export class UnknownError extends ProtostarError {
   declare cause: ReturnType<typeof serializeUnknownError>;
   declare code: "UNKNOWN_ERROR";
   declare retryable: false;

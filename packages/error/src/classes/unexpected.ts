@@ -1,6 +1,6 @@
 import { ProtostarError } from "@/classes/base";
 
-export class ProtostarUnexpectedError extends ProtostarError {
+export class UnexpectedError extends ProtostarError {
   declare code: "UNEXPECTED_ERROR";
   declare retryable: false;
   declare expected: false;
