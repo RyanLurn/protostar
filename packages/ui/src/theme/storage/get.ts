@@ -1,3 +1,4 @@
+import type { UnexpectedError, UnknownError } from "@protostar/error";
 import type { Result } from "neverthrow";
 
 import { createFallbackError } from "@protostar/error";
@@ -7,7 +8,10 @@ import { UserThemeSchema, type UserTheme } from "@/theme/schemas";
 import { THEME_STORAGE_KEY } from "@/theme/constants";
 import { ThemeStorageError } from "@/errors/theme";
 
-export function getStoredTheme(): Result<UserTheme, unknown> {
+export function getStoredTheme(): Result<
+  UserTheme,
+  ThemeStorageError | UnexpectedError | UnknownError
+> {
   if (typeof window === "undefined") {
     return ok("system");
   }
@@ -19,14 +23,19 @@ export function getStoredTheme(): Result<UserTheme, unknown> {
   } catch (error) {
     if (error instanceof DOMException && error.name === "SecurityError") {
       return err(
-        new ThemeStorageError("Failed to read theme from storage", {
-          cause: error,
-        })
+        new ThemeStorageError(
+          "Browser security policy prevents local storage access",
+          {
+            cause: error,
+          }
+        )
       );
     }
 
     return err(
-      createFallbackError("Failed to read theme from storage", { cause: error })
+      createFallbackError("Failed to read theme from local storage", {
+        cause: error,
+      })
     );
   }
 }
