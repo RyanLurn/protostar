@@ -1,6 +1,6 @@
 import { serializeError } from "serialize-error";
 
-import type { ProtostarError } from "@/base-error";
+import type { ProtostarError } from "@/classes/base";
 
 export function serializeUnknownError(error: unknown): {
   value: unknown;
