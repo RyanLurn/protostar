@@ -15,11 +15,14 @@
     "@tanstack/react-router": "^1.163.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.5.0"
+  },
+  "peerDependencies": {
     "lucide-react": "^0.575.0",
     "react": "catalog:ui",
     "react-dom": "catalog:ui",
-    "sonner": "^2.0.7",
-    "tailwind-merge": "^3.5.0"
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@protostar/eslint-config": "workspace:*",
