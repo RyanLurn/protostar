@@ -51,7 +51,11 @@
     "db:migrate": "bun --filter @protostar/db migrate",
     "db:studio": "bun --filter @protostar/db studio",
     "db:seed": "bun --filter @protostar/db seed",
-    "error:build": "bun --filter @protostar/error build"
+    "error:build": "bun --filter @protostar/error build",
+    "ui:check-types": "bun --filter @protostar/ui check-types",
+    "ui:lint": "bun --filter @protostar/ui lint",
+    "ui:lint:fix": "bun --filter @protostar/ui lint:fix",
+    "ui:check": "bun --filter @protostar/ui check"
   },
   "devDependencies": {
     "lefthook": "^2.1.1",
