@@ -13,8 +13,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/lib.mjs",
-      "types": "./dist/lib.d.mts"
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
     }
   },
   "dependencies": {

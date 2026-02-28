@@ -1,6 +1,6 @@
 import { serializeError } from "serialize-error";
 
-import type { ProtostarError } from "@/index";
+import type { ProtostarError } from "@/base-error";
 
 import { serializeUnknownError } from "@/unknown-error";
 

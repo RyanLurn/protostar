@@ -1,4 +1,4 @@
-import { ProtostarError } from "@/index";
+import { ProtostarError } from "@/base-error";
 
 export class ProtostarUnknownError extends ProtostarError {
   declare cause: ReturnType<typeof serializeUnknownError>;

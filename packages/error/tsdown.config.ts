@@ -4,5 +4,5 @@ export default defineConfig({
   dts: {
     sourcemap: true,
   },
-  entry: ["./src/lib.ts"],
+  entry: ["./src/index.ts"],
 });
