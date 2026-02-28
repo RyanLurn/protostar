@@ -143,6 +143,7 @@
       },
       "peerDependencies": {
         "lucide-react": "^0.575.0",
+        "neverthrow": "catalog:",
         "react": "catalog:ui",
         "react-dom": "catalog:ui",
         "zod": "catalog:",
