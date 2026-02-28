@@ -17,6 +17,9 @@
       "types": "./dist/lib.d.mts"
     }
   },
+  "dependencies": {
+    "serialize-error": "catalog:"
+  },
   "devDependencies": {
     "@protostar/eslint-config": "workspace:*",
     "@protostar/typescript-config": "workspace:*",
