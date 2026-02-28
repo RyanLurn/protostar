@@ -1,21 +1,36 @@
 import { ProtostarError } from "@/index";
 
 export class ProtostarUnknownError extends ProtostarError {
+  declare cause: ReturnType<typeof serializeUnknownError>;
+  declare code: "UNKNOWN_ERROR";
+  declare retryable: false;
+  declare expected: false;
+
   constructor(
     message: string,
-    { context, cause }: { context?: Record<string, unknown>; cause: unknown }
+    {
+      context,
+      cause,
+    }: {
+      context?: Record<string, unknown>;
+      cause: unknown;
+    }
   ) {
     const serializedCause = serializeUnknownError(cause);
     super(message, {
       cause: serializedCause,
       code: "UNKNOWN_ERROR",
       retryable: false,
+      expected: false,
       context,
     });
   }
 }
 
-export function serializeUnknownError(error: unknown): Record<string, unknown> {
+export function serializeUnknownError(error: unknown): {
+  value: unknown;
+  type: string;
+} {
   // Null / undefined
   if (error === null || error === undefined) {
     return { value: String(error), type: "nullish" };

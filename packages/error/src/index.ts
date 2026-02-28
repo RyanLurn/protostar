@@ -1,13 +1,6 @@
-export interface ProtostarErrorProps extends ErrorOptions {
+export class ProtostarError extends Error {
   context?: Record<string, unknown>;
-  retryable?: boolean;
-  expected: boolean;
-  code: string;
-}
-
-export class ProtostarError extends Error implements ProtostarErrorProps {
-  context?: Record<string, unknown>;
-  retryable?: boolean;
+  retryable: boolean;
   expected: boolean;
   code: string;
 
@@ -21,7 +14,7 @@ export class ProtostarError extends Error implements ProtostarErrorProps {
       code,
     }: {
       context?: Record<string, unknown>;
-      retryable?: boolean;
+      retryable: boolean;
       expected: boolean;
       cause?: unknown;
       code: string;
