@@ -1,4 +1,4 @@
-import { serializeUnknownError } from "@/serialize";
+import { serializeUnknownError } from "@/utils/serialize";
 import { ProtostarError } from "@/classes/base";
 
 export class ProtostarUnknownError extends ProtostarError {
