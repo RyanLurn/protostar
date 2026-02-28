@@ -3,6 +3,7 @@ export {
   serializeUnknownError,
 } from "@/utils/serialize";
 export { createFallbackError } from "@/utils/create-fallback";
+export { BrowserOnlyError } from "@/classes/browser-only";
 export { UnexpectedError } from "@/classes/unexpected";
 export type { ErrorObject } from "serialize-error";
 export { UnknownError } from "@/classes/unknown";
