@@ -1,5 +1,6 @@
 import type { Result } from "neverthrow";
 
+import { createFallbackError } from "@protostar/error";
 import { err, ok } from "neverthrow";
 
 import { UserThemeSchema, type UserTheme } from "@/theme/schemas";
@@ -24,6 +25,8 @@ export function getStoredTheme(): Result<UserTheme, unknown> {
       );
     }
 
-    return err(error);
+    return err(
+      createFallbackError("Failed to read theme from storage", { cause: error })
+    );
   }
 }
