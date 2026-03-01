@@ -10,6 +10,7 @@
     ],
     "catalog": {
       "@t3-oss/env-core": "^0.13.10",
+      "@tanstack/react-router": "^1.163.2",
       "consola": "^3.4.2",
       "eslint": "^10.0.2",
       "neverthrow": "^8.2.0",
@@ -28,6 +29,7 @@
       "ui": {
         "@tailwindcss/vite": "^4.2.1",
         "@vitejs/plugin-react": "^5.1.4",
+        "lucide-react": "^0.575.0",
         "react": "^19.2.4",
         "react-dom": "^19.2.4",
         "tailwindcss": "^4.2.1"

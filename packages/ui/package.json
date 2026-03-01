@@ -13,14 +13,14 @@
   "dependencies": {
     "@base-ui/react": "^1.2.0",
     "@protostar/error": "workspace:*",
-    "@tanstack/react-router": "^1.163.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.5.0"
   },
   "peerDependencies": {
-    "lucide-react": "^0.575.0",
+    "@tanstack/react-router": "catalog:",
+    "lucide-react": "catalog:ui",
     "neverthrow": "catalog:",
     "react": "catalog:ui",
     "react-dom": "catalog:ui",
