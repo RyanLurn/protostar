@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 import { handleThemeChange } from "@/features/theme/helpers/handle-theme-change";
 import { UserThemeSchema, type UserTheme } from "@/features/theme/schemas";
@@ -33,9 +34,25 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   function setTheme(newUserTheme: UserTheme) {
     const newValidTheme = UserThemeSchema.parse(newUserTheme);
-    setUserTheme(newValidTheme);
-    setStoredTheme({ theme: newValidTheme });
     handleThemeChange({ userTheme: newValidTheme });
+    setUserTheme(newValidTheme);
+
+    const setStoredThemeResult = setStoredTheme({ theme: newValidTheme });
+    if (setStoredThemeResult.isErr()) {
+      const error = setStoredThemeResult.error;
+
+      if (error.code === "BROWSER_ONLY_ERROR") {
+        throw error;
+      } else if (error.code === "THEME_STORAGE_ERROR") {
+        toast.warning(
+          "We couldn't save your theme preference because of a browser security policy."
+        );
+      } else {
+        toast.warning(
+          "Something went wrong. We couldn't save your theme preference."
+        );
+      }
+    }
   }
 
   return (
