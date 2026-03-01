@@ -123,6 +123,7 @@
       "dependencies": {
         "@base-ui/react": "^1.2.0",
         "@protostar/error": "workspace:*",
+        "@tanstack/react-router": "catalog:",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "sonner": "^2.0.7",
@@ -145,7 +146,6 @@
         "vite": "catalog:",
       },
       "peerDependencies": {
-        "@tanstack/react-router": "catalog:",
         "lucide-react": "catalog:ui",
         "neverthrow": "catalog:",
         "react": "catalog:ui",
