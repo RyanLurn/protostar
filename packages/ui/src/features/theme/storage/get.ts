@@ -4,8 +4,8 @@ import type { Result } from "neverthrow";
 import { createFallbackError } from "@protostar/error";
 import { err, ok } from "neverthrow";
 
-import { UserThemeSchema, type UserTheme } from "@/theme/schemas";
-import { THEME_STORAGE_KEY } from "@/theme/constants";
+import { UserThemeSchema, type UserTheme } from "@/features/theme/schemas";
+import { THEME_STORAGE_KEY } from "@/features/theme/constants";
 import { ThemeStorageError } from "@/errors/theme";
 
 export function getStoredTheme(): Result<

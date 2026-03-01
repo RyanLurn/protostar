@@ -3,8 +3,8 @@ import type { Result } from "neverthrow";
 import { BrowserOnlyError } from "@protostar/error";
 import { err, ok } from "neverthrow";
 
-import { UserThemeSchema, type UserTheme } from "@/theme/schemas";
-import { getSystemTheme } from "@/theme/helpers/get-system-theme";
+import { UserThemeSchema, type UserTheme } from "@/features/theme/schemas";
+import { getSystemTheme } from "@/features/theme/helpers/get-system-theme";
 
 export function handleThemeChange({
   userTheme,
