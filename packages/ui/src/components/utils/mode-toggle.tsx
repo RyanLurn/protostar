@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenu,
 } from "@/components/ui/dropdown-menu";
-import { useTheme } from "@/components/providers/theme";
+import { useTheme } from "@/features/theme/hook";
 import { Button } from "@/components/ui/button";
 
 export function ModeToggle({

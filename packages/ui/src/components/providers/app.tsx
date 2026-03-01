@@ -1,9 +1,9 @@
 import { RoutesProvider } from "@/components/providers/routes";
-import { ThemeProvider } from "@/components/providers/theme";
+import { ThemeProvider } from "@/features/theme/provider";
 
 export function AppProviders() {
   return (
-    <ThemeProvider storageKey="vite-ui-theme" defaultTheme="dark">
+    <ThemeProvider>
       <RoutesProvider />
     </ThemeProvider>
   );
