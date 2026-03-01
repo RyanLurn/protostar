@@ -41,9 +41,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     if (setStoredThemeResult.isErr()) {
       const error = setStoredThemeResult.error;
 
-      if (error.code === "BROWSER_ONLY_ERROR") {
-        throw error;
-      } else if (error.code === "THEME_STORAGE_ERROR") {
+      if (error.code === "THEME_STORAGE_ERROR") {
         toast.warning(
           "We couldn't save your theme preference because of a browser security policy."
         );
