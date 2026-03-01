@@ -7,10 +7,10 @@ import {
 } from "lucide-react";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
 
-import { useTheme } from "@/components/providers/theme";
+import { useTheme } from "@/features/theme/hook";
 
 function Toaster({ ...props }: ToasterProps) {
-  const { theme = "system" } = useTheme();
+  const { appTheme } = useTheme();
 
   return (
     <Sonner
@@ -34,8 +34,8 @@ function Toaster({ ...props }: ToasterProps) {
           toast: "cn-toast",
         },
       }}
-      theme={theme as ToasterProps["theme"]}
       className="toaster group"
+      theme={appTheme}
       {...props}
     />
   );
