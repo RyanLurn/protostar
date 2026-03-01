@@ -12,11 +12,16 @@ export function setStoredTheme({
   theme,
 }: {
   theme: UserTheme;
-}): Result<void, ThemeStorageError | UnexpectedError | UnknownError> {
+}): Result<
+  void,
+  ThemeStorageError | BrowserOnlyError | UnexpectedError | UnknownError
+> {
   if (typeof window === "undefined") {
-    throw new BrowserOnlyError({
-      context: { feature: "setStoredTheme", apis: ["localStorage"] },
-    });
+    return err(
+      new BrowserOnlyError({
+        context: { feature: "setStoredTheme", apis: ["localStorage"] },
+      })
+    );
   }
 
   try {
