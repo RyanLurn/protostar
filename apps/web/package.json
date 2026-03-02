@@ -1,5 +1,5 @@
 {
-  "name": "@protostar/admin",
+  "name": "@protostar/web",
   "type": "module",
   "private": true,
   "scripts": {

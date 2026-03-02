@@ -6,7 +6,7 @@ export const Route = createFileRoute("/")({ component: App });
 function App() {
   return (
     <div className="flex h-dvh flex-col items-center justify-center gap-y-2">
-      <h1 className="text-2xl font-bold">Protostar Admin Panel</h1>
+      <h1 className="text-2xl font-bold">Protostar Web client</h1>
       <Button onClick={() => toast.success("Yippee!")}>Button</Button>
     </div>
   );
