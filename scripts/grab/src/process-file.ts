@@ -6,6 +6,7 @@ import { parse } from "path";
 
 import { formatOutput } from "@/format-output";
 
+const ignoredBases = ["routeTree.gen.ts"];
 const ignoredExts = [".lock", ".svg"];
 
 export async function processFile({
@@ -22,11 +23,11 @@ export async function processFile({
   logger.info(`Processing file (${index + 1}/${totalFiles}): ${path}`);
 
   try {
-    const parsedFile = parse(path);
-    const ext = parsedFile.ext;
+    const parsedPath = parse(path);
+    const ext = parsedPath.ext;
 
     let content: string;
-    if (ignoredExts.includes(ext)) {
+    if (ignoredExts.includes(ext) || ignoredBases.includes(parsedPath.base)) {
       content = "[SKIPPED]";
     } else {
       content = await Bun.file(path).text();
