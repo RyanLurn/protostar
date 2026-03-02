@@ -46,19 +46,10 @@
     "check": "bun run check-types && bun run lint && bun run format:check",
     "sync-hooks": "bunx lefthook install",
     "grab": "bun --filter @protostar/grab start",
-    "web:dev": "bun --filter @protostar/web dev",
-    "api:dev": "bun --filter @protostar/api dev",
-    "db:push": "bun --filter @protostar/db push",
-    "db:generate": "bun --filter @protostar/db generate",
-    "db:migrate": "bun --filter @protostar/db migrate",
-    "db:studio": "bun --filter @protostar/db studio",
-    "db:seed": "bun --filter @protostar/db seed",
-    "error:build": "bun --filter @protostar/error build",
-    "ui:dev": "bun --filter @protostar/ui dev",
-    "ui:check-types": "bun --filter @protostar/ui check-types",
-    "ui:lint": "bun --filter @protostar/ui lint",
-    "ui:lint:fix": "bun --filter @protostar/ui lint:fix",
-    "ui:check": "bun --filter @protostar/ui check"
+    "admin:dev": "bun --elide-lines 0 --filter @protostar/admin dev",
+    "error:build": "bun --elide-lines 0 --filter @protostar/error build",
+    "ui:dev": "bun --elide-lines 0 --filter @protostar/ui dev",
+    "ui:build": "bun --elide-lines 0 --filter @protostar/ui build"
   },
   "devDependencies": {
     "lefthook": "^2.1.1",

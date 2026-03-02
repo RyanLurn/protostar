@@ -16,11 +16,12 @@
   "scripts": {
     "dev": "bunx --bun vite dev",
     "build": "bunx tsdown",
+    "build:watch": "bunx tsdown --watch",
     "check-types": "bunx tsc --noEmit",
     "lint": "bunx eslint --cache",
     "lint:fix": "bunx eslint --cache --fix",
     "check": "bun run check-types && bun run lint",
-    "ui:add": "bunx --bun shadcn add"
+    "shadcn:add": "bunx --bun shadcn add"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
