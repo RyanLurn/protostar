@@ -45,6 +45,7 @@
     "check": "bun run check-types && bun run lint && bun run format:check",
     "sync-hooks": "bunx lefthook install",
     "grab": "bun --elide-lines 0 --filter @protostar/grab start",
+    "server:dev": "bun --elide-lines 0 --filter @protostar/server dev",
     "web:dev": "bun --elide-lines 0 --filter @protostar/web dev",
     "error:build": "bun --elide-lines 0 --filter @protostar/error build",
     "ui:dev": "bun --elide-lines 0 --filter @protostar/ui dev",
