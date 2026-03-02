@@ -1,0 +1,35 @@
+{
+  "name": "@protostar/admin",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bunx --bun vite",
+    "check-types": "bunx tsc --noEmit",
+    "lint": "bunx eslint --cache",
+    "lint:fix": "bunx eslint --cache --fix",
+    "check": "bun run check-types && bun run lint"
+  },
+  "dependencies": {
+    "@protostar/error": "workspace:*",
+    "@tanstack/react-router": "catalog:",
+    "@tanstack/react-start": "^1.166.1",
+    "lucide-react": "catalog:ui",
+    "neverthrow": "catalog:",
+    "react": "catalog:ui",
+    "react-dom": "catalog:ui",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@protostar/eslint-config": "workspace:*",
+    "@protostar/typescript-config": "workspace:*",
+    "@tailwindcss/vite": "catalog:ui",
+    "@types/bun": "catalog:types",
+    "@types/react": "catalog:types",
+    "@types/react-dom": "catalog:types",
+    "@vitejs/plugin-react": "catalog:ui",
+    "eslint": "catalog:",
+    "tailwindcss": "catalog:ui",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  }
+}
