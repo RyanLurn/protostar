@@ -18,6 +18,7 @@ export {
 
 export { ModeToggle } from "@/components/utils/mode-toggle";
 export { ThemeProvider } from "@/features/theme/provider";
+export { themeScript } from "@/features/theme/script";
 export { useTheme } from "@/features/theme/hook";
 export { Toaster } from "@/components/ui/sonner";
 export { Button } from "@/components/ui/button";
