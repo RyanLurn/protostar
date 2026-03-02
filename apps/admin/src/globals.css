@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "@protostar/ui/style.css";
+
+@source "../node_modules/@protostar/ui/dist/index.js";
