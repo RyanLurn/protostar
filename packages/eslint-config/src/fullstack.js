@@ -6,7 +6,7 @@ import globals from "globals";
 
 import { baseConfig } from "./utils/base.js";
 
-export const frontendConfig = defineConfig([
+export const fullstackConfig = defineConfig([
   baseConfig,
   {
     languageOptions: {
