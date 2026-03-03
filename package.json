@@ -47,6 +47,7 @@
     "grab": "bun --elide-lines 0 --filter @protostar/grab start",
     "server:dev": "bun --elide-lines 0 --filter @protostar/server dev",
     "web:dev": "bun --elide-lines 0 --filter @protostar/web dev",
+    "common:build": "bun --elide-lines 0 --filter @protostar/common build",
     "error:build": "bun --elide-lines 0 --filter @protostar/error build",
     "ui:dev": "bun --elide-lines 0 --filter @protostar/ui dev",
     "ui:build": "bun --elide-lines 0 --filter @protostar/ui build"
