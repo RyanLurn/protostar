@@ -123,22 +123,6 @@
         "zod": "catalog:",
       },
     },
-    "scripts/gen": {
-      "name": "@protostar/gen",
-      "dependencies": {
-        "@protostar/error": "workspace:*",
-        "consola": "catalog:",
-        "neverthrow": "catalog:",
-        "zod": "catalog:",
-      },
-      "devDependencies": {
-        "@protostar/eslint-config": "workspace:*",
-        "@protostar/typescript-config": "workspace:*",
-        "@types/bun": "catalog:types",
-        "eslint": "catalog:",
-        "typescript": "catalog:",
-      },
-    },
     "scripts/grab": {
       "name": "@protostar/grab",
       "dependencies": {
@@ -406,8 +390,6 @@
     "@protostar/error": ["@protostar/error@workspace:packages/error"],
 
     "@protostar/eslint-config": ["@protostar/eslint-config@workspace:packages/eslint-config"],
-
-    "@protostar/gen": ["@protostar/gen@workspace:scripts/gen"],
 
     "@protostar/grab": ["@protostar/grab@workspace:scripts/grab"],
 
