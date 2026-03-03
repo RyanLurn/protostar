@@ -54,6 +54,17 @@
         "vite": "catalog:",
       },
     },
+    "packages/common": {
+      "name": "@protostar/common",
+      "devDependencies": {
+        "@protostar/eslint-config": "workspace:*",
+        "@protostar/typescript-config": "workspace:*",
+        "@types/bun": "catalog:types",
+        "eslint": "catalog:",
+        "tsdown": "catalog:",
+        "typescript": "catalog:",
+      },
+    },
     "packages/error": {
       "name": "@protostar/error",
       "dependencies": {
@@ -386,6 +397,8 @@
     "@open-draft/until": ["@open-draft/until@2.1.0", "", {}, "sha512-U69T3ItWHvLwGg5eJ0n3I62nWuE6ilHlmz7zM0npLBRvPRd7e6NYmg54vvRtP5mZG7kZqZCFVdsTWo7BPtBujg=="],
 
     "@oxc-project/types": ["@oxc-project/types@0.114.0", "", {}, "sha512-//nBfbzHQHvJs8oFIjv6coZ6uxQ4alLfiPe6D5vit6c4pmxATHHlVwgB1k+Hv4yoAMyncdxgRBF5K4BYWUCzvA=="],
+
+    "@protostar/common": ["@protostar/common@workspace:packages/common"],
 
     "@protostar/error": ["@protostar/error@workspace:packages/error"],
 
