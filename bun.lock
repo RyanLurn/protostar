@@ -102,6 +102,7 @@
       "name": "@protostar/ui",
       "dependencies": {
         "@base-ui/react": "^1.2.0",
+        "@protostar/common": "workspace:*",
         "@protostar/error": "workspace:*",
         "@tanstack/react-router": "catalog:",
         "class-variance-authority": "^0.7.1",

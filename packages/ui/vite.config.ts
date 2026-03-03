@@ -1,4 +1,5 @@
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import { UI_DEV_SERVER_PORT } from "@protostar/common/ports";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -19,5 +20,8 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "src"),
     },
+  },
+  server: {
+    port: UI_DEV_SERVER_PORT,
   },
 });
